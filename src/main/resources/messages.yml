@@ -1,0 +1,95 @@
+prefix: "&#56C9CD[Scheduler]"
+
+messages:
+  reload: "%prefix% &aPlugin files have been reloaded."
+  update-available: "%prefix% &aA new version is available! &7(&c{current} &7→ &a{new}&7)"
+  no-permission: "%prefix% &cYou don't have permission to do this!"
+  player-required: "%prefix% &cOnly players can use this!"
+  missing-argument: "%prefix% &cMissing argument: &e{argument}"
+  input-cancelled: "%prefix% &7Input cancelled."
+
+  help:
+    - ""
+    - "&#56C9CD&lScheduler &7- commands"
+    - " &#D3DBE3/scheduler editor [event] &7- open the in-game editor"
+    - " &#D3DBE3/scheduler list &7- list every event"
+    - " &#D3DBE3/scheduler next &7- show the next event"
+    - " &#D3DBE3/scheduler run <event> &7- run an event right now"
+    - " &#D3DBE3/scheduler toggle <event> &7- enable / disable an event"
+    - " &#D3DBE3/scheduler once add <time> <actions> &7- run actions once"
+    - "   &7time: &f10m&7, &f1h30m&7, &f18:00&7, &f2026-12-24@18:00 &7| actions separated by &f |"
+    - " &#D3DBE3/scheduler once list &7/ &#D3DBE3cancel <id> &7- pending one-time tasks"
+    - " &#D3DBE3/scheduler reload &7- reload the plugin files"
+    - ""
+
+  event:
+    not-found: "%prefix% &cThere is no event named &e{event}&c!"
+    created: "%prefix% &aThe event &e{event} &ahas been created."
+    deleted: "%prefix% &aThe event &e{event} &ahas been deleted."
+    already-exists: "%prefix% &cAn event named &e{event} &calready exists!"
+    invalid-name: "%prefix% &cInvalid event name: &e{event}&c. Use letters, numbers, - and _ only."
+    enabled: "%prefix% &aThe event &e{event} &ahas been enabled."
+    disabled: "%prefix% &cThe event &e{event} &chas been disabled."
+    run: "%prefix% &aThe event &e{event} &ahas been run."
+    run-cancelled: "%prefix% &cThe run of &e{event} &cwas cancelled by another plugin."
+    required-players-set: "%prefix% &aThe event &e{event} &anow requires &e{amount} &aonline players."
+    required-players-removed: "%prefix% &aThe event &e{event} &ano longer requires online players."
+    invalid-number: "%prefix% &cInvalid number: &e{input}&c. It must be at least 1."
+
+  time:
+    added: "%prefix% &aAdded &e{time} &ato &e{event}&a. Next run in &e{next_run}&a."
+    edited: "%prefix% &aChanged &e{old} &ato &e{time}&a. Next run in &e{next_run}&a."
+    deleted: "%prefix% &aRemoved &e{time} &afrom &e{event}&a."
+    invalid: "%prefix% &cInvalid cron expression: &e{time}&c. Check it at &fhttps://crontab.guru/"
+    already-exists: "%prefix% &cThe event already runs at &e{time}&c!"
+
+  action:
+    added: "%prefix% &aAdded &e{action} &ato &e{event}&a."
+    edited: "%prefix% &aChanged &e{old} &ato &e{action}&a."
+    deleted: "%prefix% &aRemoved &e{action} &afrom &e{event}&a."
+    invalid: "%prefix% &cUnknown action type: &e{action}&c. It must start with [COMMAND], [MESSAGE], [TITLE] ..."
+
+  list:
+    header: "%prefix% &7Scheduled events (&e{count}&7):"
+    entry: " &8• &#56C9CD{event} &8| {status} &8| &7next: &f{next_run} &8| &7times: &f{times} &8| &7actions: &f{actions}"
+    empty: "%prefix% &7There are no scheduled events yet. Create one with &e/scheduler editor&7."
+
+  once:
+    added: "%prefix% &aOne-time task &e#{id} &ascheduled for &e{date} &7(in {remaining}, {actions} action(s))&a."
+    invalid-time: "%prefix% &cInvalid time: &e{time}&c. Use &f10m&c, &f1h30m&c, &f18:00 &cor &f2026-12-24@18:00&c."
+    in-past: "%prefix% &cThe time &e{time} &cis already in the past!"
+    cancelled: "%prefix% &aOne-time task &e#{id} &ahas been cancelled."
+    not-found: "%prefix% &cThere is no pending one-time task &e#{id}&c!"
+    list:
+      header: "%prefix% &7Pending one-time tasks (&e{count}&7):"
+      entry: " &8• &#56C9CD#{id} &8| &f{date} &7(in {remaining}) &8| &7by &f{creator} &8| &7{actions}"
+      empty: "%prefix% &7There are no pending one-time tasks."
+
+  next: "%prefix% &7The next event is &#56C9CD{event} &7in &e{next_run}&7."
+  next-none: "%prefix% &7There is no upcoming event."
+
+  status:
+    enabled: "&#70EF5CEnabled"
+    disabled: "&#FF7C7CDisabled"
+  required-players-none: "None"
+  next-run-never: "Never"
+  last-run-never: "Never"
+  last-run-format: "{time} ago"
+
+  time-units:
+    day: "day"
+    day-plural: "days"
+    hour: "hour"
+    hour-plural: "hours"
+    minute: "minute"
+    minute-plural: "minutes"
+    second: "second"
+    second-plural: "seconds"
+
+    short:
+      day: "d"
+      hour: "h"
+      minute: "m"
+      second: "s"
+
+version: 2

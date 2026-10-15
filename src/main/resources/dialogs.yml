@@ -1,0 +1,191 @@
+# external-title  - name shown on buttons that open this dialog
+# pause           - pauses the game in singleplayer only
+# after-action    - CLOSE, NONE or WAIT_FOR_RESPONSE
+# widths          - 1-1024
+#
+# Placeholders: {player}, {event}, {value} (the value being edited)
+
+settings:
+  # Seconds the buttons of an opened dialog stay usable
+  timeout: 300
+  cancel-message: true
+
+dialogs:
+  create-event:
+    title: "&8Create an event"
+    external-title: ""
+    can-close-with-escape: true
+    pause: false
+    after-action: CLOSE
+    body:
+      - "&7Choose a name for the new event."
+      - "&7Letters, numbers, - and _ only."
+    body-width: 220
+    input:
+      label: "&7Event name"
+      label-visible: true
+      width: 220
+      max-length: 32
+      initial: ""
+      multiline:
+        enabled: false
+        max-lines: 1
+        height: 32
+    confirm:
+      label: "&aCreate"
+      tooltip: "&7Create the event"
+      width: 100
+    cancel:
+      label: "&cCancel"
+      tooltip: ""
+      width: 100
+
+  add-time:
+    title: "&8Add a time to {event}"
+    external-title: ""
+    can-close-with-escape: true
+    pause: false
+    after-action: CLOSE
+    body:
+      - "&7Enter a cron expression:"
+      - "&f<minute> <hour> <day> <month> <weekday>"
+      - ""
+      - "&7Example: &f0 18 * * 6,0 &7(weekends at 18:00)"
+      - "&7Help: &fcrontab.guru"
+    body-width: 260
+    input:
+      label: "&7Cron expression"
+      label-visible: true
+      width: 260
+      max-length: 128
+      initial: ""
+      multiline:
+        enabled: false
+        max-lines: 1
+        height: 32
+    confirm:
+      label: "&aAdd"
+      tooltip: ""
+      width: 100
+    cancel:
+      label: "&cCancel"
+      tooltip: ""
+      width: 100
+
+  edit-time:
+    title: "&8Edit a time of {event}"
+    external-title: ""
+    can-close-with-escape: true
+    pause: false
+    after-action: CLOSE
+    body:
+      - "&7Current: &f{value}"
+      - "&f<minute> <hour> <day> <month> <weekday>"
+    body-width: 260
+    input:
+      label: "&7Cron expression"
+      label-visible: true
+      width: 260
+      max-length: 128
+      initial: "{value}"
+      multiline:
+        enabled: false
+        max-lines: 1
+        height: 32
+    confirm:
+      label: "&aSave"
+      tooltip: ""
+      width: 100
+    cancel:
+      label: "&cCancel"
+      tooltip: ""
+      width: 100
+
+  add-action:
+    title: "&8Add an action to {event}"
+    external-title: ""
+    can-close-with-escape: true
+    pause: false
+    after-action: CLOSE
+    body:
+      - "&7Start with the action type, for example:"
+      - "&f[COMMAND] say Hello"
+      - "&f[MESSAGE] &#56C9CDThe event has started!"
+      - "&f[DELAY] 5s"
+    body-width: 300
+    input:
+      label: "&7Action"
+      label-visible: true
+      width: 300
+      max-length: 512
+      initial: ""
+      multiline:
+        enabled: false
+        max-lines: 3
+        height: 64
+    confirm:
+      label: "&aAdd"
+      tooltip: ""
+      width: 100
+    cancel:
+      label: "&cCancel"
+      tooltip: ""
+      width: 100
+
+  edit-action:
+    title: "&8Edit an action of {event}"
+    external-title: ""
+    can-close-with-escape: true
+    pause: false
+    after-action: CLOSE
+    body: []
+    body-width: 300
+    input:
+      label: "&7Action"
+      label-visible: true
+      width: 300
+      max-length: 512
+      initial: "{value}"
+      multiline:
+        enabled: false
+        max-lines: 3
+        height: 64
+    confirm:
+      label: "&aSave"
+      tooltip: ""
+      width: 100
+    cancel:
+      label: "&cCancel"
+      tooltip: ""
+      width: 100
+
+  required-players:
+    title: "&8Required players of {event}"
+    external-title: ""
+    can-close-with-escape: true
+    pause: false
+    after-action: CLOSE
+    body:
+      - "&7How many players must be online"
+      - "&7for the event to run?"
+    body-width: 220
+    input:
+      label: "&7Amount"
+      label-visible: true
+      width: 220
+      max-length: 5
+      initial: "{value}"
+      multiline:
+        enabled: false
+        max-lines: 1
+        height: 32
+    confirm:
+      label: "&aSave"
+      tooltip: ""
+      width: 100
+    cancel:
+      label: "&cCancel"
+      tooltip: ""
+      width: 100
+
+version: 1

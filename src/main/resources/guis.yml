@@ -1,0 +1,344 @@
+events:
+  title: '&8Scheduled Events'
+  size: 54
+  tick: 20
+
+  event-slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
+
+  sounds:
+    open: "minecraft:block.barrel.open"
+    error: "minecraft:block.note_block.bass"
+    action: "minecraft:entity.experience_orb.pickup"
+    page: "minecraft:item.book.page_turn"
+
+  # Placeholders: {event}, {status}, {next_run}, {times}, {actions}, {not_enough_players_actions}, {required_players}, {last_run}
+  event:
+    material: CLOCK
+    # Used instead of 'material' while the event is disabled
+    disabled-material: GRAY_DYE
+    name: '&#56C9CD{event}'
+    lore:
+      - '&#7A8592Scheduled event'
+      - ''
+      - ' &#D3DBE3◆ Status: {status}'
+      - ' &#D3DBE3◆ Next run: &#FFFFFF{next_run}'
+      - ' &#D3DBE3◆ Last run: &#FFFFFF{last_run}'
+      - ' &#D3DBE3◆ Times: &#FFFFFF{times}'
+      - ' &#D3DBE3◆ Actions: &#FFFFFF{actions}'
+      - ' &#D3DBE3◆ Required players: &#FFFFFF{required_players}'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFEdit'
+      - '&#C7D0D9» Right click: &#FFFFFFEnable / disable'
+      - '&#C7D0D9» Shift + Right click: &#FFFFFFRun now'
+      - '&#C7D0D9» Drop (Q): &#FF7C7CDelete'
+
+  empty:
+    slot: 22
+    material: STRUCTURE_VOID
+    name: '&#FF7C7CNo events yet'
+    lore:
+      - '&#7A8592Create your first event with'
+      - '&#7A8592the book below.'
+
+  # Placeholders: {page}, {pages}
+  previous:
+    slot: 48
+    material: ARROW
+    name: '&#FFD166Previous page'
+    lore:
+      - '&#7A8592Page {page}/{pages}'
+
+  next:
+    slot: 50
+    material: SPECTRAL_ARROW
+    name: '&#FFD166Next page'
+    lore:
+      - '&#7A8592Page {page}/{pages}'
+
+  items:
+    border:
+      slot: border
+      material: GRAY_STAINED_GLASS_PANE
+      name: ' '
+      priority: 1
+
+    create:
+      slot: 49
+      material: WRITABLE_BOOK
+      name: '&#70EF5CCreate Event'
+      lore:
+        - '&#7A8592Create a new scheduled event'
+        - ''
+        - '&#C7D0D9» Left click: &#FFFFFFCreate'
+
+    close:
+      slot: 45
+      material: BARRIER
+      name: '&#FF7C7CClose'
+
+event-editor:
+  # Placeholders: {event}
+  title: '&8Editing: {event}'
+  size: 27
+  tick: 20
+
+  sounds:
+    open: "minecraft:block.barrel.open"
+    error: "minecraft:block.note_block.bass"
+    action: "minecraft:entity.experience_orb.pickup"
+
+  # Placeholders of every item: {event}, {status}, {next_run}, {times}, {actions}, {not_enough_players_actions}, {required_players}, {last_run}
+  times:
+    slot: 10
+    material: CLOCK
+    name: '&#56C9CDScheduled Times'
+    lore:
+      - '&#7A8592When the event runs (cron expressions)'
+      - ''
+      - ' &#D3DBE3◆ Times: &#FFFFFF{times}'
+      - ' &#D3DBE3◆ Next run: &#FFFFFF{next_run}'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFEdit times'
+
+  actions:
+    slot: 11
+    material: COMMAND_BLOCK
+    name: '&#56C9CDActions'
+    lore:
+      - '&#7A8592What happens when the event runs'
+      - ''
+      - ' &#D3DBE3◆ Actions: &#FFFFFF{actions}'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFEdit actions'
+
+  not-enough-players-actions:
+    slot: 12
+    material: CHAIN_COMMAND_BLOCK
+    name: '&#F4A261Not Enough Players Actions'
+    lore:
+      - '&#7A8592Runs instead of the actions when'
+      - '&#7A8592there are not enough players online'
+      - ''
+      - ' &#D3DBE3◆ Actions: &#FFFFFF{not_enough_players_actions}'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFEdit actions'
+
+  required-players:
+    slot: 14
+    material: PLAYER_HEAD
+    name: '&#F4A261Required Players'
+    lore:
+      - '&#7A8592Minimum online players to run the event'
+      - ''
+      - ' &#D3DBE3◆ Current: &#FFFFFF{required_players}'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFSet amount'
+      - '&#C7D0D9» Right click: &#FFFFFFRemove requirement'
+
+  enabled:
+    slot: 15
+    material: LIME_DYE
+    name: '&#70EF5CEnabled'
+    lore:
+      - '&#7A8592The event runs automatically'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFDisable'
+
+  disabled:
+    slot: 15
+    material: GRAY_DYE
+    name: '&#FF7C7CDisabled'
+    lore:
+      - '&#7A8592The event never runs automatically'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFEnable'
+
+  run:
+    slot: 16
+    material: FIREWORK_ROCKET
+    name: '&#FFD166Run Now'
+    lore:
+      - '&#7A8592Runs the actions right now,'
+      - '&#7A8592ignoring the required players'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFRun'
+
+  items:
+    border:
+      slot: border
+      material: GRAY_STAINED_GLASS_PANE
+      name: ' '
+      priority: 1
+
+    back:
+      slot: 22
+      material: BARRIER
+      name: '&#FF7C7CBack to events'
+
+times:
+  # Placeholders: {event}
+  title: '&8Times: {event}'
+  size: 54
+  tick: 20
+
+  time-slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
+
+  sounds:
+    open: "minecraft:block.barrel.open"
+    error: "minecraft:block.note_block.bass"
+    action: "minecraft:entity.experience_orb.pickup"
+    page: "minecraft:item.book.page_turn"
+
+  # Placeholders: {event}, {time}, {time_next_run}, {index}
+  time:
+    material: CLOCK
+    name: '&#56C9CD{time}'
+    lore:
+      - '&#7A8592Time #{index}'
+      - ''
+      - ' &#D3DBE3◆ Next run: &#FFFFFF{time_next_run}'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFEdit'
+      - '&#C7D0D9» Drop (Q): &#FF7C7CDelete'
+
+  empty:
+    slot: 22
+    material: STRUCTURE_VOID
+    name: '&#FF7C7CNo times yet'
+    lore:
+      - '&#7A8592This event never runs until'
+      - '&#7A8592you add a time.'
+
+  previous:
+    slot: 48
+    material: ARROW
+    name: '&#FFD166Previous page'
+    lore:
+      - '&#7A8592Page {page}/{pages}'
+
+  next:
+    slot: 50
+    material: SPECTRAL_ARROW
+    name: '&#FFD166Next page'
+    lore:
+      - '&#7A8592Page {page}/{pages}'
+
+  items:
+    border:
+      slot: border
+      material: GRAY_STAINED_GLASS_PANE
+      name: ' '
+      priority: 1
+
+    help:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: '&#FFD166Cron format'
+      lore:
+        - '&#7A8592<minute> <hour> <day> <month> <weekday>'
+        - ''
+        - ' &#D3DBE3◆ &#FFFFFF0 12 * * * &#7A8592- every day at 12:00'
+        - ' &#D3DBE3◆ &#FFFFFF*/30 * * * * &#7A8592- every 30 minutes'
+        - ' &#D3DBE3◆ &#FFFFFF0 18 * * 6,0 &#7A8592- weekends at 18:00'
+        - ''
+        - '&#7A8592Help: &#FFFFFFcrontab.guru'
+
+    create:
+      slot: 49
+      material: WRITABLE_BOOK
+      name: '&#70EF5CAdd Time'
+      lore:
+        - '&#C7D0D9» Left click: &#FFFFFFAdd a new time'
+
+    back:
+      slot: 45
+      material: BARRIER
+      name: '&#FF7C7CBack to the editor'
+
+actions:
+  # Placeholders: {event}, {list}
+  title: '&8{list}: {event}'
+  size: 54
+  tick: 0
+
+  action-slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
+
+  list-names:
+    actions: 'Actions'
+    not-enough-players-actions: 'Fallback'
+
+  sounds:
+    open: "minecraft:block.barrel.open"
+    error: "minecraft:block.note_block.bass"
+    action: "minecraft:entity.experience_orb.pickup"
+    page: "minecraft:item.book.page_turn"
+
+  # Placeholders: {event}, {action}, {action_type}, {index}
+  action:
+    material: PAPER
+    name: '&#56C9CD#{index} &#FFFFFF{action_type}'
+    lore:
+      - '&#7A8592{action}'
+      - ''
+      - '&#C7D0D9» Left click: &#FFFFFFEdit'
+      - '&#C7D0D9» Shift + Left click: &#FFFFFFMove up'
+      - '&#C7D0D9» Shift + Right click: &#FFFFFFMove down'
+      - '&#C7D0D9» Drop (Q): &#FF7C7CDelete'
+
+  empty:
+    slot: 22
+    material: STRUCTURE_VOID
+    name: '&#FF7C7CNo actions yet'
+    lore:
+      - '&#7A8592Add an action with the book below.'
+
+  previous:
+    slot: 48
+    material: ARROW
+    name: '&#FFD166Previous page'
+    lore:
+      - '&#7A8592Page {page}/{pages}'
+
+  next:
+    slot: 50
+    material: SPECTRAL_ARROW
+    name: '&#FFD166Next page'
+    lore:
+      - '&#7A8592Page {page}/{pages}'
+
+  items:
+    border:
+      slot: border
+      material: GRAY_STAINED_GLASS_PANE
+      name: ' '
+      priority: 1
+
+    help:
+      slot: 4
+      material: KNOWLEDGE_BOOK
+      name: '&#FFD166Action types'
+      lore:
+        - ' &#D3DBE3◆ &#FFFFFF[COMMAND] &#7A8592<command>'
+        - ' &#D3DBE3◆ &#FFFFFF[PLAYER_COMMAND] &#7A8592<command>'
+        - ' &#D3DBE3◆ &#FFFFFF[MESSAGE] &#7A8592<text>'
+        - ' &#D3DBE3◆ &#FFFFFF[ACTIONBAR] &#7A8592<text>'
+        - ' &#D3DBE3◆ &#FFFFFF[TITLE] &#7A8592<text>'
+        - ' &#D3DBE3◆ &#FFFFFF[SUBTITLE] &#7A8592<text>'
+        - ' &#D3DBE3◆ &#FFFFFF[SOUND] &#7A8592<sound> [volume] [pitch]'
+        - ' &#D3DBE3◆ &#FFFFFF[WEBHOOK] &#7A8592<name>'
+        - ' &#D3DBE3◆ &#FFFFFF[DELAY] &#7A8592<ticks | 5s>'
+        - ' &#D3DBE3◆ &#FFFFFF[RANDOM] &#7A8592<random group>'
+
+    create:
+      slot: 49
+      material: WRITABLE_BOOK
+      name: '&#70EF5CAdd Action'
+      lore:
+        - '&#C7D0D9» Left click: &#FFFFFFAdd a new action'
+
+    back:
+      slot: 45
+      material: BARRIER
+      name: '&#FF7C7CBack to the editor'
+
+version: 2

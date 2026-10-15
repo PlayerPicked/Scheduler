@@ -1,20 +1,40 @@
-name: mc-Scheduler
-version: '${project.version}'
-main: com.mongenscave.mcScheduler.Scheduler
-api-version: '1.18'
-depend: [PlaceholderAPI]
-authors: [ Leonidas ]
+name: Scheduler
+version: '${version}'
+author: "kxtsoo"
+main: com.playerpicked.scheduler.Scheduler
+api-version: '1.21'
 folia-supported: true
+description: "Cron based event scheduler with an in-game editor."
 
-commands:
-  mcscheduler:
-    alias: ['mcscheduler', 'scheduler', 'mc-scheduler']
-    description: 'Use Scheduler commands'
-    usage: /mcscheduler <args>
-    subcommands:
-      reload:
-        description: 'Reload the plugin files.'
-        usage: '/mcscheduler reload'
-      editor:
-        description: 'Edit the plugin events.'
-        usage: '/mcscheduler editor'
+softdepend:
+  - PlaceholderAPI
+
+permissions:
+  scheduler.admin:
+    description: "Access to every Scheduler command."
+    default: op
+    children:
+      scheduler.reload: true
+      scheduler.editor: true
+      scheduler.list: true
+      scheduler.next: true
+      scheduler.run: true
+      scheduler.toggle: true
+      scheduler.once: true
+      scheduler.update-notify: true
+  scheduler.reload:
+    default: op
+  scheduler.editor:
+    default: op
+  scheduler.list:
+    default: op
+  scheduler.next:
+    default: true
+  scheduler.run:
+    default: op
+  scheduler.toggle:
+    default: op
+  scheduler.update-notify:
+    default: op
+  scheduler.once:
+    default: op

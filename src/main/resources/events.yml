@@ -1,0 +1,75 @@
+events:
+  event1:
+    enabled: true
+    times:
+      - "0 12 * * 1"
+      - "0 13 * * 2"
+      - "0 14 * * 3"
+    required-players: 5
+    catch-up: false
+    actions:
+      - "[TITLE] &#56C9CDEvent starting"
+      - "[SUBTITLE] &7in 10 seconds"
+      - "[SOUND] block.note_block.pling"
+      - "[DELAY] 10s"
+      - "[COMMAND] say Hello"
+      - "[MESSAGE] &#56C9CDThe event has started, good luck %player_name%!"
+    not-enough-players-actions:
+      - "[MESSAGE] &#FF7C7CThere aren't enough players on the server to start the event."
+
+  event2:
+    enabled: true
+    times:
+      - "0 23 * * 2"
+      - "0 18 * * 3"
+    required-players: -1
+    actions:
+      - "[COMMAND] broadcast Event 2"
+      - "[ACTIONBAR] &#56C9CDEvent 2 is running"
+      - "[WEBHOOK] example"
+    not-enough-players-actions: []
+
+  lootbox:
+    enabled: false
+    times:
+      - "0 */2 * * *"
+    at:
+      - "2026-12-24 18:00"
+    required-players: 3
+    catch-up: true
+    conditions:
+      placeholders:
+        - "%server_tps_1% >= 18"
+      date:
+        from: "2026-12-01"
+        to: "2026-12-31"
+    filters:
+      worlds:
+        - "world"
+      permission: ""
+    actions:
+      - "[MESSAGE] &#FFD166A lootbox is being opened..."
+      - "[DELAY] 3s"
+      - "[RANDOM] reward"
+    not-enough-players-actions: []
+    random-groups:
+      reward:
+        pick: 1
+        entries:
+          common:
+            weight: 70
+            actions:
+              - "[COMMAND] give @a minecraft:iron_ingot 16"
+              - "[MESSAGE] &7Everyone received &f16 iron&7."
+          rare:
+            weight: 25
+            actions:
+              - "[COMMAND] give @a minecraft:diamond 3"
+              - "[MESSAGE] &bEveryone received &f3 diamonds&b!"
+          legendary:
+            weight: 5
+            actions:
+              - "[COMMAND] give @a minecraft:netherite_ingot 1"
+              - "[TITLE] &6&lLEGENDARY"
+              - "[SUBTITLE] &eEveryone received a netherite ingot!"
+              - "[SOUND] ui.toast.challenge_complete"
