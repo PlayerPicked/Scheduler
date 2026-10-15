@@ -1,7 +1,15 @@
 hooks:
-  settings:
-    PlaceholderAPI:
-      placeholder_format: "%days%:%hours%:%minutes%:%seconds%"
-      active: "Active"
+  placeholderapi:
+    # %scheduler_nextrun_<event>% - time until the next run
+    # %scheduler_nextrun_seconds_<event>% - seconds until the next run (-1 = never)
+    # %scheduler_lastrun_<event>% - time since the last run
+    # %scheduler_enabled_<event>% - true / false
+    # %scheduler_times_<event>% - number of cron times
+    # %scheduler_next_event% - the event that runs next
+    # %scheduler_next_event_time% - time until that event runs
+    enabled: true
 
-version: 1
+    # Returned when the event does not exist or never runs
+    none: "---"
+
+version: 2

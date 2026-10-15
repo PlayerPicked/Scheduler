@@ -1,52 +1,41 @@
-Settings:
-  timezone: "Europe/London"
-  prefix: "&8[&#56C9CDScheduler&8] »"
-  enable_update_checker: true
-  update_notify: "%prefix% &aA new version of the plugin is available! &8(&c%current_version% &f→ &e%latest_version%&8)"
-  command_create: "%prefix% &aType the command to create it, or 'cancel' to abort."
-  command_rename: "%prefix% &aType the new command to create it, or 'cancel' to abort."
-  command_created: "%prefix% &aThe command named '%command%' has been created."
-  command_deleted: "%prefix% &aThe command named '%command%' has been deleted."
-  command_renamed: "%prefix% &aThe command named '%old_command%' has been changed to '%new_command%'."
-  command_already_exists: "%prefix% &cAn command with this name already exists."
-  time_create: "%prefix% &aType the time to create it, or 'cancel' to abort."
-  time_rename: "%prefix% &aType the new time to create it, or 'cancel' to abort."
-  time_created: "%prefix% &aThe time named '%time%' has been created."
-  time_deleted: "%prefix% &aThe time named '%time%' has been deleted."
-  time_renamed: "%prefix% &aThe time named '%old_time%' has been changed to '%new_time%'."
-  time_already_exists: "%prefix% &cAn event with this name already exists."
-  event_create: "%prefix% &aType the event name to create it, or 'cancel' to abort."
-  event_created: "%prefix% &aThe event named '%event_name%' has been created."
-  event_deleted: "%prefix% &aThe event named '%event_name%' has been deleted."
-  event_already_exists: "%prefix% &cAn event with this name already exists."
-  reload_message: "%prefix% &aPlugin files have been successfully reloaded."
-  no_permission_message: "%prefix% &cYou don't have permission to use this command."
-  not_player_message: "%prefix% &cThis command can only be used by players."
-  usage_message: "%prefix% &fUsage: &7/mcscheduler reload"
+# https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: "Europe/London"
 
-# Times documentation: https://crontab.guru/
-Events:
-  event1:
-    times:
-      - "0 12 * * 1" # monday 12:00
-      - "0 13 * * 2" # tuesday 13:00
-      - "0 14 * * 3" # wednesday 14:00
-    required_players: 5
-    no_enough_player_commands:
-      - "[MESSAGE] &#ff1100There aren't enough players on the server to execute the event."
-    commands:
-      - "[COMMAND] say Hello"
-      - "[MESSAGE] &#56C9CDTest"
-      - "[TITLE] &#56C9CDTitle"
-      - '[SOUND] enchant.thorns.hit'
-  event2:
-    times:
-      - "0 23 * * 2"
-      - "0 18 * * 3"
-    commands:
-      - "[COMMAND] broadcast Hi"
-      - "[COMMAND] broadcast Event 2"
-      - "[ACTIONBAR] &#56C9CDEvent2"
-      - "[WEBHOOK] example"
+update-checker:
+  enabled: true
 
-version: "1.0"
+formatting:
+  # CLOCK_DD_HH_MM_SS, CLOCK_HH_MM_SS, CLOCK_MM_SS, WORDS_FULL, WORDS_COMPACT, HOURS_ONLY, MINUTES_ONLY, SECONDS_ONLY
+  time-format: "WORDS_COMPACT"
+
+actions:
+  # In ticks (20 ticks = 1 second)
+  title:
+    fade-in: 10
+    stay: 70
+    fade-out: 20
+
+  # Can be overridden per action: [SOUND] entity.player.levelup 1.0 1.5
+  sound:
+    volume: 1.0
+    pitch: 1.0
+
+catch-up:
+  # Runs events missed while the server was offline once after startup.
+  # Default for events without their own 'catch-up' option.
+  enabled: false
+
+  # Only runs missed within this window count (30m, 2h, 1d). Also applies to one-time tasks.
+  max-age: "1h"
+
+  # Seconds to wait after startup before running the missed events and tasks
+  delay: 30
+
+one-time:
+  # Run one-time tasks that became due while the server was offline (within catch-up.max-age), false = drop them
+  run-missed: true
+
+editor:
+  event-name-pattern: "[A-Za-z0-9_-]{1,32}"
+
+version: 2
